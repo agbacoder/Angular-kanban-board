@@ -1,0 +1,46 @@
+ <!-- New Task Modal -->
+ 
+  <app-modal modalID="newTaskForm">
+    <span class="text-2xl font-bold">Add Task</span>
+
+    <app-alert *ngIf="showAlert" [color]="alertColor">
+      <p>{{ alertMsg}}</p>
+  </app-alert>
+    <form #newTaskForm="ngForm" (ngSubmit)="createTask()">
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Title</label>
+          <input #title="ngModel"
+          type="text" name="text" [(ngModel)]="credentials.title"
+            class="block w-full py-1.5 px-3 border border-gray-600 transition
+              duration-500 focus:outline-none rounded bg-transparent
+              focus:border-slate-500 font-semibold break-word"
+            placeholder="Enter Title"  required/>
+            <p *ngIf="title.errors && title.touched && title.dirty" class="text-red-400 font-semibold">
+                Enter Title
+            </p>
+        
+        </div>
+        <!-- Description  -->
+        <div class="mb-3">
+          <label class="inline-block mb-2">Description</label>
+          <textarea #description="ngModel" 
+             [(ngModel)]="credentials.description"  name="description"   type="description"
+            class="block w-full py-1.5 px-3 border border-gray-600 transition
+            duration-500 focus:outline-none rounded bg-transparent
+            focus:border-slate-500 font-semibold break-word" 
+            placeholder="Enter Description" required></textarea>
+            <p *ngIf="description.errors && description.touched && description.dirty" class="text-red-400 font-semibold">
+                Enter Description
+            </p>
+        </div>
+        <button type="submit"
+          class="block w-full bg-gray-700 py-1.5 px-3 text-white rounded transition font-semibold
+            hover:bg-gray-800 disabled:opacity-50 disabled:bg-gray-400" [disabled]="newTaskForm.invalid || onCreateTask">
+          Submit
+        </button>
+      </form>
+     
+ </app-modal>
+
+  
