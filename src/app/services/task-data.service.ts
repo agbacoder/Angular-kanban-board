@@ -7,7 +7,7 @@ import { ITasks } from '../models/tasks.model';
   providedIn: 'root'
 })
 export class TaskDataService {
-  private baseUrl = 'http://localhost:3000/open_tasks';
+  
 
 
   constructor (private _http: HttpClient){ }
